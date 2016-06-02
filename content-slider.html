@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Content Slider</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<style>
+		.results{
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script src="jquery.js"></script>
+<script>
+
+	var index = 0;
+
+	function slider(){
+
+		if(index>=12){
+			index = 0;
+		}
+
+		$.getJSON('data.json',function(data){
+			
+			var output = "";
+	
+			output += "<div class='results'>";
+			output += "<h1>"+data[index].name+"</h1>";
+			//output += "<img src='images/"+data[index].short_name+".jpg' class='image'>";
+			output += "<p class='bio'>"+data[index].bio+"</p>";
+			output += "</div>";
+
+			$('#content').html(output);
+			
+			index++;
+		});
+
+	}
+	
+	window.onload = slider;
+
+	setInterval('slider()',3000);
+</script>
+</body>
+</html>

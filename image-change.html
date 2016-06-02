@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clickable content Slider</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+
+		body{
+			background: #def0ad;
+		}
+
+		#content{
+			width: 80%;
+			margin-left:10%;
+			margin-top: 10px;
+			height: auto; 
+		}
+
+		img{
+			height: 100px;
+			width: 100px;
+		}
+
+		li{
+			list-style: none;	
+		}
+
+		#results{
+			background: powderblue;
+			border: 1px solid black;
+			margin-top: 10px;
+			padding: 10px;
+			animation: myanimation 1s;
+		}
+
+		#bio{
+			display: none;
+		}
+
+		#image:hover{
+			border: 1px solid black;
+		}
+
+		@keyframes myanimation{
+			0%{opacity: .3}
+			50%{opacity: .7}
+			100%{opacity: 1.0}
+		}
+
+		#buttons{
+			width: 80%;
+			margin-left: 10%;
+			background: purple;
+		}
+
+		#buttons button{
+			height: 30px;
+			width: 100px;
+			border:1px solid black;
+			border-radius: 30px;
+			background: #fafafa;
+		}
+
+		#buttons #next{
+			float: right;
+		}
+
+		#buttons button:hover{
+			background: #aaafaa;
+		}
+
+		#image_index{
+			width: 80%;
+			margin-top: 10px;
+			margin-left: 10%;
+			background: powderblue;
+			font-size: 20px;
+			font-family: verdana;
+		}
+	</style>
+	
+</head>
+<body>
+<div id="buttons">
+	<button onclick="prev()" id="prev">Prev</button>
+	<button onclick="next()" id="next">Next</button>
+</div>
+<div id="image_index"></div>
+<div id="content"></div>
+
+<script src="jquery.js"></script>
+<script>
+
+		var index = 0;
+
+		function displayImage(){
+			$.getJSON('data.json',function(data){
+			
+				var output = "<ul>";
+		
+				output += "<div id='results'>";
+				output += "<li><h1>"+data[index].name+"<h1></li>";
+				output += "<img src='images/"+data[index].short_name+".jpg' id='image'>";
+				output += "<p id='bio'>"+data[index].bio+"</p>";
+				output += "</div>";
+
+				output += "</ul>";
+
+				$('#content').html(output);
+				
+				$("#image_index").html("Showing image "+(index+1)+" of "+data.length);
+
+				$("#image").hover(function(){
+					$("#bio").slideToggle();
+				});
+
+			});
+		}
+		
+
+	function next(){
+		
+		if(index>=12){
+			index = 12;
+		}
+		else{
+			index++;
+		}
+
+		displayImage();
+
+	}
+
+	function prev(){
+
+		if(index==0){
+			index = 0;
+		}
+		else if(index>0){
+			index--;
+		}
+
+		displayImage();
+	}
+
+	window.onload = displayImage;
+</script>
+</body>
+</html>

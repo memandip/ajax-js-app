@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Live Search Project</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+
+		body{
+			background: #def0ad;
+		}
+
+		#search{
+			width: 80%;
+			margin-left: 10%;
+			margin-top: 20px;
+		}
+
+		#searchtxt{
+			height: 30px;
+		}
+
+		#content{
+			width: 80%;
+			margin-left:10%;
+			margin-top: 10px;
+			height: auto; 
+		}
+
+		img{
+			height: 100px;
+			width: 100px;
+		}
+
+		.results{
+			background: powderblue;
+			border: 1px solid black;
+			margin-top: 10px;
+			padding: 10px;
+		}
+
+		@keyframes myanimation{
+			0%{opacity: .3}
+			50%{opacity: .7}
+			100%{opacity: 1.0}
+		}
+
+		.bio{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+<div id="search">
+	<h2>Enter search text</h2>
+	<label for="searchtxt"><h4 style="display: inline;">Search text: </h4></label>
+	<input type="text" name="searchtxt" id="searchtxt" placeholder="Enter your search text here">
+
+</div>
+<div id="content"></div>
+
+<script src="jquery.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

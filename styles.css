@@ -1,0 +1,69 @@
+*{
+	margin:0;
+	padding: 0;
+}
+
+body{
+	background: #def0ad;
+}
+
+#search{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 20px;
+}
+
+#searchtxt{
+	height: 30px;
+}
+
+#content{
+	width: 80%;
+	margin-left:10%;
+	margin-top: 10px;
+	height: auto; 
+}
+
+img{
+	height: 100px;
+	width: 100px;
+}
+
+.results{
+	background: powderblue;
+	border: 1px solid black;
+	margin-top: 10px;
+	padding: 10px;
+	height:100px;
+	overflow: hidden;
+	transition: height 1s;
+	-webkit-transition: height 1s;
+	-moz-transition: height 1s;
+	-o-transition: height 1s;
+	animation: myanimation 1s;
+}
+
+.results:hover{
+	overflow: visible;
+	height:200px;
+}
+
+@media(max-width: 768px){
+	.results:hover{
+		overflow: visible;
+		height:240px;
+	}
+}
+
+@media(max-width: 384px){
+	.results:hover{
+		overflow: visible;
+		height:420px;
+	}
+}
+
+@keyframes myanimation{
+	0%{opacity: .3}
+	50%{opacity: .7}
+	100%{opacity: 1.0}
+}
